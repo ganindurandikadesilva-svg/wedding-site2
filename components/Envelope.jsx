@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 /* ── Floating petals ─────────────────────────────── */
 function Petal({ delay, x, size, duration }) {
@@ -50,10 +50,8 @@ function Petal({ delay, x, size, duration }) {
 }
 
 /* ── Stars bg ────────────────────────────────────── */
-// Replace the StarField component with this:
 function StarField() {
   const [stars, setStars] = useState([]);
-
   useEffect(() => {
     setStars(
       Array.from({ length: 60 }, (_, i) => ({
@@ -65,7 +63,6 @@ function StarField() {
       })),
     );
   }, []);
-
   return (
     <div
       style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0 }}
@@ -93,6 +90,7 @@ function StarField() {
     </div>
   );
 }
+
 /* ── Ornamental ring ─────────────────────────────── */
 function OrnamentalRing({ size = 300, opacity = 0.12 }) {
   const lines = Array.from({ length: 24 }, (_, i) => {
@@ -105,7 +103,6 @@ function OrnamentalRing({ size = 300, opacity = 0.12 }) {
       y2: Math.round(150 + 140 * Math.sin(rad) * 1000) / 1000,
     };
   });
-
   const dots = Array.from({ length: 8 }, (_, i) => {
     const angle = (i * 360) / 8;
     const rad = (angle * Math.PI) / 180;
@@ -114,7 +111,6 @@ function OrnamentalRing({ size = 300, opacity = 0.12 }) {
       cy: Math.round(150 + 130 * Math.sin(rad) * 1000) / 1000,
     };
   });
-
   return (
     <svg width={size} height={size} viewBox="0 0 300 300" style={{ opacity }}>
       <defs>
@@ -165,7 +161,8 @@ function OrnamentalRing({ size = 300, opacity = 0.12 }) {
     </svg>
   );
 }
-/* ── Wax seal SVG ────────────────────────────────── */
+
+/* ── Wax seal — clean lotus only, no text ────────── */
 function WaxSeal({ onClick, isOpening }) {
   return (
     <motion.button
@@ -211,6 +208,7 @@ function WaxSeal({ onClick, isOpening }) {
             />
           </filter>
         </defs>
+
         {/* Scalloped edge */}
         {Array.from({ length: 16 }, (_, i) => {
           const angle = (i * 360) / 16;
@@ -219,6 +217,8 @@ function WaxSeal({ onClick, isOpening }) {
           const cy = 55 + 50 * Math.sin(rad);
           return <circle key={i} cx={cx} cy={cy} r="7" fill="url(#sealGrad)" />;
         })}
+
+        {/* Body */}
         <circle
           cx="55"
           cy="55"
@@ -226,6 +226,8 @@ function WaxSeal({ onClick, isOpening }) {
           fill="url(#sealGrad)"
           filter="url(#sealShadow)"
         />
+
+        {/* Rings */}
         <circle
           cx="55"
           cy="55"
@@ -238,57 +240,141 @@ function WaxSeal({ onClick, isOpening }) {
         <circle
           cx="55"
           cy="55"
-          r="32"
+          r="30"
           fill="none"
           stroke="#c9a84c"
           strokeWidth="0.5"
-          opacity="0.3"
+          opacity="0.25"
         />
-        {/* Inner lotus */}
-        {[0, 60, 120, 180, 240, 300].map((a) => (
+
+        {/* Lotus petals — outer */}
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
           <ellipse
             key={a}
             cx="55"
             cy="40"
-            rx="4.5"
+            rx="3.5"
             ry="10"
-            fill="rgba(201,168,76,0.5)"
+            fill="rgba(155,114,200,0.3)"
+            stroke="#9b72c8"
+            strokeWidth="0.4"
             transform={`rotate(${a} 55 55)`}
           />
         ))}
+
+        {/* Lotus petals — inner gold */}
+        {[0, 60, 120, 180, 240, 300].map((a) => (
+          <ellipse
+            key={a}
+            cx="55"
+            cy="44"
+            rx="3"
+            ry="8"
+            fill="rgba(201,168,76,0.5)"
+            stroke="#c9a84c"
+            strokeWidth="0.4"
+            transform={`rotate(${a} 55 55)`}
+          />
+        ))}
+
+        {/* Center gem */}
         <circle
           cx="55"
           cy="55"
-          r="8"
-          fill="rgba(201,168,76,0.3)"
+          r="9"
+          fill="rgba(201,168,76,0.2)"
           stroke="#c9a84c"
-          strokeWidth="1"
+          strokeWidth="0.8"
         />
-        {/* T&D text */}
+        <circle cx="55" cy="55" r="4" fill="#c9a84c" opacity="0.55" />
+
+        {/* OPEN hint at bottom */}
         <text
           x="55"
-          y="52"
-          textAnchor="middle"
-          fontFamily="Cormorant Garamond, serif"
-          fontSize="11"
-          fill="#c9a84c"
-          fontWeight="600"
-        >
-          T&amp;D
-        </text>
-        <text
-          x="55"
-          y="63"
+          y="90"
           textAnchor="middle"
           fontFamily="Montserrat, sans-serif"
-          fontSize="4"
-          fill="#e8d5a3"
-          letterSpacing="2"
+          fontSize="5"
+          fill="#c9a84c"
+          letterSpacing="3"
+          opacity="0.7"
         >
           OPEN
         </text>
       </svg>
     </motion.button>
+  );
+}
+
+/* ── Monogram placed in envelope upper-right quadrant */
+function EnvelopeMonogram() {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        // upper-right quadrant: right of vertical centerline, above horizontal centerline
+        top: "18%",
+        right: "12%",
+        pointerEvents: "none",
+        zIndex: 15,
+        textAlign: "center",
+      }}
+    >
+      {/* Thin decorative rule above */}
+      <div
+        style={{
+          width: 40,
+          height: 1,
+          background:
+            "linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent)",
+          margin: "0 auto 5px",
+        }}
+      />
+
+      {/* T & D */}
+      <div
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "1.35rem",
+          fontWeight: 400,
+          color: "rgba(201,168,76,0.85)",
+          lineHeight: 1,
+          letterSpacing: "0.08em",
+          fontStyle: "italic",
+        }}
+      >
+        T{" "}
+        <span style={{ fontSize: "0.9rem", color: "rgba(201,168,76,0.55)" }}>
+          &amp;
+        </span>{" "}
+        D
+      </div>
+
+      {/* Thin decorative rule below */}
+      <div
+        style={{
+          width: 40,
+          height: 1,
+          background:
+            "linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent)",
+          margin: "5px auto 0",
+        }}
+      />
+
+      {/* Year in small caps */}
+      <div
+        style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: "0.28rem",
+          letterSpacing: "0.35em",
+          color: "rgba(201,168,76,0.45)",
+          textTransform: "uppercase",
+          marginTop: 4,
+        }}
+      >
+        2026
+      </div>
+    </div>
   );
 }
 
@@ -338,30 +424,24 @@ export default function Envelope() {
       {mounted && petals.map((p, i) => <Petal key={i} {...p} />)}
 
       {/* Ambient rings */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          pointerEvents: "none",
-          zIndex: 1,
-        }}
-      >
-        <OrnamentalRing size={600} opacity={0.07} />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          pointerEvents: "none",
-          zIndex: 1,
-        }}
-      >
-        <OrnamentalRing size={900} opacity={0.04} />
-      </div>
+      {[
+        { size: 600, opacity: 0.07 },
+        { size: 900, opacity: 0.04 },
+      ].map((r, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        >
+          <OrnamentalRing size={r.size} opacity={r.opacity} />
+        </div>
+      ))}
 
       {/* Ambient glow blobs */}
       <div
@@ -409,6 +489,7 @@ export default function Envelope() {
             color: "#c9a84c",
             textTransform: "uppercase",
             marginBottom: 20,
+            marginTop: 20,
           }}
         >
           ✦ &nbsp; You Are Invited &nbsp; ✦
@@ -450,7 +531,7 @@ export default function Envelope() {
             letterSpacing: "0.35em",
             textTransform: "uppercase",
             marginTop: 10,
-            marginBottom: 52,
+            marginBottom: 50,
           }}
         >
           05 · September · 2026
@@ -506,10 +587,10 @@ export default function Envelope() {
 
               {/* Corner ornaments */}
               {[
-                { top: 0, left: 0, rotate: 0 },
-                { top: 0, right: 0, rotate: 90 },
-                { bottom: 0, right: 0, rotate: 180 },
-                { bottom: 0, left: 0, rotate: 270 },
+                { top: 0, left: 0 },
+                { top: 0, right: 0 },
+                { bottom: 0, right: 0 },
+                { bottom: 0, left: 0 },
               ].map((pos, i) => (
                 <div
                   key={i}
@@ -563,13 +644,16 @@ export default function Envelope() {
                 }}
               />
 
+              {/* T & D monogram — upper-right quadrant */}
+              <EnvelopeMonogram />
+
               {/* Side rotated text */}
               <div
                 style={{
                   position: "absolute",
-                  right: -8,
+                  left: -8,
                   top: "50%",
-                  transform: "translateY(-50%) rotate(90deg)",
+                  transform: "translateY(-50%) rotate(-90deg)",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -578,7 +662,7 @@ export default function Envelope() {
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "0.38rem",
                     letterSpacing: "0.4em",
-                    color: "rgba(201,168,76,0.3)",
+                    color: "rgba(201,168,76,0.7)",
                     textTransform: "uppercase",
                   }}
                 >
@@ -596,7 +680,7 @@ export default function Envelope() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: [0, 0.6, 0] }}
                     exit={{ opacity: 0 }}
-                    transition={{ repeat: Infinity, duration: 2.5, delay: 2.5 }}
+                    transition={{ repeat: Infinity, duration: 3, delay: 1 }}
                     style={{
                       position: "absolute",
                       bottom: 22,
@@ -636,7 +720,6 @@ export default function Envelope() {
                         pointerEvents: "none",
                       }}
                     />
-                    {/* Rays */}
                     {Array.from({ length: 12 }, (_, i) => (
                       <motion.div
                         key={i}
@@ -701,7 +784,6 @@ export default function Envelope() {
                   stroke="rgba(201,168,76,0.2)"
                   strokeWidth="1"
                 />
-                {/* Flap ornament */}
                 <circle
                   cx="150"
                   cy="50"

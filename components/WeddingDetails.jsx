@@ -48,11 +48,9 @@ function Reveal({ children, style = {}, custom = 0 }) {
   );
 }
 
-/* ─── Starfield (fixed) ──────────────────────────── */
-// Replace the Stars component with this:
+/* ─── Starfield ──────────────────────────────────── */
 function Stars() {
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     setItems(
       Array.from({ length: 50 }, (_, i) => ({
@@ -64,7 +62,6 @@ function Stars() {
       })),
     );
   }, []);
-
   return (
     <div
       style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0 }}
@@ -92,6 +89,7 @@ function Stars() {
     </div>
   );
 }
+
 /* ─── Gold divider ───────────────────────────────── */
 function Divider({ icon = "✦" }) {
   return (
@@ -137,6 +135,37 @@ function Label({ children, style = {} }) {
     >
       {children}
     </p>
+  );
+}
+
+/* ─── Location Pin SVG ───────────────────────────── */
+function LocationPin({ size = 18, color = T.gold }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+        fill={color}
+        fillOpacity="0.15"
+        stroke={color}
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <circle
+        cx="12"
+        cy="9"
+        r="2.5"
+        fill={color}
+        fillOpacity="0.5"
+        stroke={color}
+        strokeWidth="1"
+      />
+    </svg>
   );
 }
 
@@ -199,7 +228,7 @@ function CountdownUnit({ value, label }) {
   );
 }
 
-/* ─── Parent card ────────────────────────────────── */
+/* ─── Person card ────────────────────────────────── */
 function PersonCard({ role, p1, p2, name, custom }) {
   return (
     <Reveal custom={custom}>
@@ -217,7 +246,6 @@ function PersonCard({ role, p1, p2, name, custom }) {
           overflow: "hidden",
         }}
       >
-        {/* shimmer line */}
         <div
           style={{
             position: "absolute",
@@ -348,6 +376,9 @@ export default function WeddingDetails() {
   });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  /* ─── Couple image URL ───────────────────────────── */
+  /* Replace this with your actual image path, e.g. "/images/couple.jpg" */
+  const COUPLE_IMAGE_URL = "../couple_image.png"; // e.g. "/images/couple.jpg" or "https://..."
 
   return (
     <div
@@ -524,7 +555,7 @@ export default function WeddingDetails() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                style={{ marginTop: 52, color: T.goldMid, fontSize: "0.7rem" }}
+                style={{ marginTop: 42, color: T.goldMid, fontSize: "0.7rem" }}
               >
                 ↓ scroll
               </motion.div>
@@ -551,7 +582,6 @@ export default function WeddingDetails() {
             </p>
           </Reveal>
 
-          {/* Couple photo frame */}
           <Reveal custom={1} style={{ marginTop: 32 }}>
             <div
               style={{
@@ -569,21 +599,36 @@ export default function WeddingDetails() {
                 overflow: "hidden",
               }}
             >
-              <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "3.5rem" }}>💑</div>
-                <p
+              {COUPLE_IMAGE_URL ? (
+                <img
+                  src={COUPLE_IMAGE_URL}
+                  alt="Tharindu & Dasuni"
                   style={{
-                    fontFamily: T.labelFont,
-                    fontSize: "0.38rem",
-                    color: T.fgFaint,
-                    letterSpacing: "0.3em",
-                    marginTop: 8,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                    display: "block",
                   }}
-                >
-                  PHOTO
-                </p>
-              </div>
-              {/* Shimmer ring */}
+                />
+              ) : (
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "3.5rem" }}>💑</div>
+                  <p
+                    style={{
+                      fontFamily: T.labelFont,
+                      fontSize: "0.38rem",
+                      color: T.fgFaint,
+                      letterSpacing: "0.3em",
+                      marginTop: 8,
+                    }}
+                  >
+                    PHOTO
+                  </p>
+                </div>
+              )}
+
+              {/* Shimmer ring — always on top */}
               <div
                 style={{
                   position: "absolute",
@@ -688,7 +733,6 @@ export default function WeddingDetails() {
                 }}
               />
 
-              {/* Big date display */}
               <div
                 style={{
                   fontFamily: T.displayFont,
@@ -731,7 +775,6 @@ export default function WeddingDetails() {
                 }}
               />
 
-              {/* Poruwa */}
               <div
                 style={{
                   display: "inline-flex",
@@ -767,7 +810,6 @@ export default function WeddingDetails() {
                 </Label>
               </div>
 
-              {/* Saturday badge */}
               <div style={{ marginTop: 20 }}>
                 <span
                   style={{
@@ -870,11 +912,10 @@ export default function WeddingDetails() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "0.85rem",
                   flexShrink: 0,
                 }}
               >
-                📍
+                <LocationPin size={16} color={T.purple} />
               </div>
               <div>
                 <p
@@ -974,7 +1015,8 @@ export default function WeddingDetails() {
                 backdropFilter: "blur(16px)",
               }}
             >
-              📍 &nbsp; Get Directions
+              <LocationPin size={14} color={T.gold} />
+              <span>Get Directions</span>
             </motion.a>
           </Reveal>
         </Section>
@@ -983,8 +1025,16 @@ export default function WeddingDetails() {
         <Divider />
         <div style={{ textAlign: "center", paddingBottom: 20 }}>
           <Reveal custom={0}>
-            <Lotus size={60} />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              >
+                <Lotus size={60} />
+              </motion.div>
+            </div>
           </Reveal>
+
           <Reveal custom={1}>
             <p
               style={{
@@ -998,11 +1048,13 @@ export default function WeddingDetails() {
               "Two souls, one beautiful journey"
             </p>
           </Reveal>
+
           <Reveal custom={2}>
             <Label style={{ color: T.fgFaint, fontSize: "0.4rem" }}>
               Tharindu &amp; Dasuni · September 2026
             </Label>
           </Reveal>
+
           <Reveal custom={3}>
             <div
               style={{
