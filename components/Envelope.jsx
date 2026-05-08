@@ -400,7 +400,7 @@ export default function Envelope() {
   const handleOpen = () => {
     if (isOpening) return;
     setIsOpening(true);
-    setTimeout(() => router.push("/invite"), 2200);
+    setTimeout(() => router.push("/invite"), 1100);
   };
 
   const petals = [
