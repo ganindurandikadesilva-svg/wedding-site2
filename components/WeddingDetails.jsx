@@ -368,7 +368,7 @@ function Lotus({ size = 90 }) {
 /* ══════════════════════════════════════════════════ */
 export default function WeddingDetails() {
   const router = useRouter();
-  const countdown = useCountdown("2026-08-16T10:30:00");
+  const countdown = useCountdown("2026-08-19T10:30:00");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -543,7 +543,7 @@ export default function WeddingDetails() {
 
             <Reveal custom={5}>
               <Label style={{ marginTop: 28, color: T.fgMuted }}>
-                Sunday · 16 August · 2026
+                Wednesday · 19 August · 2026
               </Label>
             </Reveal>
 
@@ -647,7 +647,7 @@ export default function WeddingDetails() {
           <PersonCard
             role="Beloved Daughter of"
             p1="Mr. D. G Jayathissa"
-            p2="& Mrs. H. D. Nayana Jayawardena"
+            p2="& Mrs. Sitha Dayarathne"
             name="Chathurika"
             custom={0}
           />
@@ -743,7 +743,7 @@ export default function WeddingDetails() {
                   marginBottom: 4,
                 }}
               >
-                16
+                19
               </div>
               <div
                 style={{
@@ -927,7 +927,7 @@ export default function WeddingDetails() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Kurunegala
+                  Akuressa
                 </p>
                 <p
                   style={{
@@ -970,7 +970,7 @@ export default function WeddingDetails() {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.6191473772915!2d80.33853617365766!3d7.507227510953419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3309fabb3bb11%3A0x51173f2afeb33d6c!2sGreen%20Valley%20Resort!5e0!3m2!1sen!2slk!4v1778251781249!5m2!1sen!2slk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2649299116115!2d80.47964157364686!3d6.09497292799757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1424155fb6e45%3A0x785d5d52b126a25c!2sWasana%20Hotel!5e0!3m2!1sen!2slk!4v1778253008203!5m2!1sen!2slk"
                 width="100%"
                 height="100%"
                 style={{
@@ -987,7 +987,7 @@ export default function WeddingDetails() {
           {/* Directions button */}
           <Reveal custom={5}>
             <motion.a
-              href="https://www.google.com/maps/place/Green+Valley+Resort/@7.5072275,80.3385362,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae3309fabb3bb11:0x51173f2afeb33d6c!5m2!4m1!1i2!8m2!3d7.5072222!4d80.3411111!16s%2Fg%2F1hd_g70fc?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D"
+              href="https://www.google.com/maps/place/Wasana+Hotel/@6.0949729,80.4796416,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae1424155fb6e45:0x785d5d52b126a25c!8m2!3d6.0949676!4d80.4822165!16s%2Fg%2F11b633y8n2?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{
