@@ -534,7 +534,7 @@ export default function Envelope() {
             marginBottom: 50,
           }}
         >
-          05 · September · 2026
+          16 · August · 2026
         </motion.p>
 
         {/* Envelope */}

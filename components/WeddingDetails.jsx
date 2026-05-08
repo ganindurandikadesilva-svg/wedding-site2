@@ -368,7 +368,7 @@ function Lotus({ size = 90 }) {
 /* ══════════════════════════════════════════════════ */
 export default function WeddingDetails() {
   const router = useRouter();
-  const countdown = useCountdown("2026-09-05T10:30:00");
+  const countdown = useCountdown("2026-08-16T10:30:00");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -543,7 +543,7 @@ export default function WeddingDetails() {
 
             <Reveal custom={5}>
               <Label style={{ marginTop: 28, color: T.fgMuted }}>
-                Saturday · 05 September · 2026
+                Sunday · 16 August · 2026
               </Label>
             </Reveal>
 
@@ -646,7 +646,7 @@ export default function WeddingDetails() {
         <Section>
           <PersonCard
             role="Beloved Daughter of"
-            p1="Mr. R. M. Sunil Jayawardena"
+            p1="Mr. D. G Jayathissa"
             p2="& Mrs. H. D. Nayana Jayawardena"
             name="Chathurika"
             custom={0}
@@ -690,8 +690,8 @@ export default function WeddingDetails() {
 
           <PersonCard
             role="Beloved Son of"
-            p1="Mr. A. P. Dinesh Perera"
-            p2="& Mrs. S. R. Malithi Perera"
+            p1="Mr. A. K. A Sumanapala"
+            p2="& Mrs. W. G. Chandrika"
             name="Sameera"
             custom={2}
           />
@@ -743,7 +743,7 @@ export default function WeddingDetails() {
                   marginBottom: 4,
                 }}
               >
-                05
+                16
               </div>
               <div
                 style={{
@@ -754,7 +754,7 @@ export default function WeddingDetails() {
                   marginBottom: 4,
                 }}
               >
-                SEPTEMBER
+                AUGUST
               </div>
               <div
                 style={{
@@ -790,7 +790,7 @@ export default function WeddingDetails() {
               >
                 <span style={{ fontSize: "0.9rem" }}>🪷</span>
                 <Label style={{ color: T.purple, letterSpacing: "0.2em" }}>
-                  Poruwa at 10:12 AM
+                  Poruwa at 11:05 AM
                 </Label>
               </div>
 
@@ -887,9 +887,9 @@ export default function WeddingDetails() {
                 marginBottom: 8,
               }}
             >
-              Lumina
+              Green Valley
               <br />
-              Ballroom
+              Resort
             </h2>
           </Reveal>
 
@@ -927,7 +927,7 @@ export default function WeddingDetails() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Cinnamon Grand Colombo
+                  Kurunegala
                 </p>
                 <p
                   style={{
@@ -970,7 +970,7 @@ export default function WeddingDetails() {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.772580675548!2d79.84586477365278!3d6.917769918458876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259be2c6291d3%3A0xe9d61ae167b8738c!2sCinnamon%20Grand%20Colombo!5e0!3m2!1sen!2slk!4v1777892066764!5m2!1sen!2slk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.6191473772915!2d80.33853617365766!3d7.507227510953419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3309fabb3bb11%3A0x51173f2afeb33d6c!2sGreen%20Valley%20Resort!5e0!3m2!1sen!2slk!4v1778251781249!5m2!1sen!2slk"
                 width="100%"
                 height="100%"
                 style={{
@@ -987,7 +987,7 @@ export default function WeddingDetails() {
           {/* Directions button */}
           <Reveal custom={5}>
             <motion.a
-              href="https://www.google.com/maps/place/Cinnamon+Grand+Colombo/@6.9177699,79.8458648,17z"
+              href="https://www.google.com/maps/place/Green+Valley+Resort/@7.5072275,80.3385362,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae3309fabb3bb11:0x51173f2afeb33d6c!5m2!4m1!1i2!8m2!3d7.5072222!4d80.3411111!16s%2Fg%2F1hd_g70fc?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{
@@ -1051,7 +1051,7 @@ export default function WeddingDetails() {
 
           <Reveal custom={2}>
             <Label style={{ color: T.fgFaint, fontSize: "0.4rem" }}>
-              Sameera &amp; Chathurika · September 2026
+              Sameera &amp; Chathurika · August 2026
             </Label>
           </Reveal>
 
