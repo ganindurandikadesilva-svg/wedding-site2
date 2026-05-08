@@ -343,11 +343,11 @@ function EnvelopeMonogram() {
           fontStyle: "italic",
         }}
       >
-        T{" "}
+        S{" "}
         <span style={{ fontSize: "0.9rem", color: "rgba(201,168,76,0.55)" }}>
           &amp;
         </span>{" "}
-        D
+        C
       </div>
 
       {/* Thin decorative rule below */}
@@ -510,13 +510,13 @@ export default function Envelope() {
             lineHeight: 1.1,
           }}
         >
-          Tharindu
+          Sameera
           <span
             style={{ color: "#c9a84c", fontStyle: "italic", margin: "0 14px" }}
           >
             &
           </span>
-          Dasuni
+          Chathurika
         </motion.h1>
 
         {/* Date */}
@@ -666,7 +666,7 @@ export default function Envelope() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Tharindu & Dasuni · 2026
+                  Sameera & Chathurika · 2026
                 </span>
               </div>
 

@@ -508,7 +508,7 @@ export default function WeddingDetails() {
                   letterSpacing: "0.02em",
                 }}
               >
-                Tharindu
+                Sameera
               </h1>
             </Reveal>
 
@@ -537,7 +537,7 @@ export default function WeddingDetails() {
                   letterSpacing: "0.02em",
                 }}
               >
-                Dasuni
+                Chathurika
               </h1>
             </Reveal>
 
@@ -602,7 +602,7 @@ export default function WeddingDetails() {
               {COUPLE_IMAGE_URL ? (
                 <img
                   src={COUPLE_IMAGE_URL}
-                  alt="Tharindu & Dasuni"
+                  alt="Sameera & Chathurika"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -648,7 +648,7 @@ export default function WeddingDetails() {
             role="Beloved Daughter of"
             p1="Mr. R. M. Sunil Jayawardena"
             p2="& Mrs. H. D. Nayana Jayawardena"
-            name="Dasuni"
+            name="Chathurika"
             custom={0}
           />
 
@@ -692,7 +692,7 @@ export default function WeddingDetails() {
             role="Beloved Son of"
             p1="Mr. A. P. Dinesh Perera"
             p2="& Mrs. S. R. Malithi Perera"
-            name="Tharindu"
+            name="Sameera"
             custom={2}
           />
         </Section>
@@ -1051,7 +1051,7 @@ export default function WeddingDetails() {
 
           <Reveal custom={2}>
             <Label style={{ color: T.fgFaint, fontSize: "0.4rem" }}>
-              Tharindu &amp; Dasuni · September 2026
+              Sameera &amp; Chathurika · September 2026
             </Label>
           </Reveal>
 
