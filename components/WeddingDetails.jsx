@@ -803,7 +803,7 @@ export default function WeddingDetails() {
                     fontWeight: 300,
                   }}
                 >
-                  10:30 AM
+                  09:00 AM
                 </div>
                 <Label style={{ color: T.fgMuted, marginTop: 6 }}>
                   to 04:00 PM
