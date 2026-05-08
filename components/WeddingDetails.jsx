@@ -788,10 +788,10 @@ export default function WeddingDetails() {
                   marginBottom: 20,
                 }}
               >
-                <span style={{ fontSize: "0.9rem" }}>🪷</span>
+                {/* <span style={{ fontSize: "0.9rem" }}>🪷</span>
                 <Label style={{ color: T.purple, letterSpacing: "0.2em" }}>
                   Poruwa at 11:05 AM
-                </Label>
+                </Label> */}
               </div>
 
               <div style={{ marginTop: 4 }}>
@@ -803,7 +803,7 @@ export default function WeddingDetails() {
                     fontWeight: 300,
                   }}
                 >
-                  09:00 AM
+                  09:30 AM
                 </div>
                 <Label style={{ color: T.fgMuted, marginTop: 6 }}>
                   to 04:00 PM
@@ -824,7 +824,7 @@ export default function WeddingDetails() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Saturday
+                  Wednesday
                 </span>
               </div>
             </div>
@@ -887,9 +887,9 @@ export default function WeddingDetails() {
                 marginBottom: 8,
               }}
             >
-              Green Valley
+              Wasana
               <br />
-              Resort
+              Hotel
             </h2>
           </Reveal>
 
